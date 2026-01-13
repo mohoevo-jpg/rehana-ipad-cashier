@@ -28,11 +28,9 @@
    cd rehana-ipad-cashier
    ```
 2. افتح "الطرفية" (Terminal) داخل المجلد.
-3. نفذ الأوامر التالية بالترتيب:
+3. نفذ الأوامر التالية لتجهيز المشروع:
    ```bash
    npm install
-   npm run build
-   npx cap add ios
    npx cap sync
    ```
 4. لفتح المشروع في Xcode:
