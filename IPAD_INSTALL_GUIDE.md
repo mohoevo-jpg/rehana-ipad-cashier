@@ -22,7 +22,11 @@
 هذه الطريقة تتطلب وجود جهاز **Mac** وبرنامج **Xcode** لتوليد ملف التثبيت.
 
 ### الخطوات (على جهاز Mac):
-1. انسخ مجلد `cashier-app` بالكامل إلى جهاز Mac.
+1. قم بتحميل المشروع من GitHub:
+   ```bash
+   git clone https://github.com/mohoevo-jpg/rehana-ipad-cashier.git
+   cd rehana-ipad-cashier
+   ```
 2. افتح "الطرفية" (Terminal) داخل المجلد.
 3. نفذ الأوامر التالية بالترتيب:
    ```bash
