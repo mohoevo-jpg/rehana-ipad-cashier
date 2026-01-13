@@ -126,6 +126,6 @@ dist
 .DS_Store
 
 # Capacitor
-/ios
-/android
-/electron
+# /ios
+# /android
+# /electron
