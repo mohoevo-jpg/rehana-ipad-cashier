@@ -30,57 +30,57 @@ const routes = [
       {
         path: 'sales',
         name: 'Sales',
-        component: () => import('@main-app/views/Sales.vue'),
+        component: () => import('../views/Sales.vue'),
       },
       {
         path: 'stock',
         name: 'Stock',
-        component: () => import('@main-app/views/Stock.vue'),
+        component: () => import('../views/Stock.vue'),
       },
       {
         path: 'chat',
         name: 'Chat',
-        component: () => import('@main-app/views/Chat.vue'),
+        component: () => import('../views/Chat.vue'),
       },
       {
         path: 'settings',
         name: 'Settings',
-        component: () => import('@main-app/views/Settings.vue'),
+        component: () => import('../views/Settings.vue'),
       },
       {
         path: 'reports',
         name: 'Reports',
-        component: () => import('@main-app/views/Reports.vue'),
+        component: () => import('../views/Reports.vue'),
       },
       {
         path: 'users',
         name: 'Users',
-        component: () => import('@main-app/views/Users.vue'),
+        component: () => import('../views/Users.vue'),
       },
       {
         path: 'branches',
         name: 'Branches',
-        component: () => import('@main-app/views/Branches.vue'),
+        component: () => import('../views/Branches.vue'),
       },
       {
         path: 'customers',
         name: 'Customers',
-        component: () => import('@main-app/views/Customers.vue'),
+        component: () => import('../views/Customers.vue'),
       },
       {
         path: 'complaints',
         name: 'Complaints',
-        component: () => import('@main-app/views/Complaints.vue'),
+        component: () => import('../views/Complaints.vue'),
       },
       {
         path: 'online-orders',
         name: 'OnlineOrders',
-        component: () => import('@main-app/views/OnlineOrders.vue'),
+        component: () => import('../views/OnlineOrders.vue'),
       },
       {
         path: 'activity-logs',
         name: 'ActivityLogs',
-        component: () => import('@main-app/views/ActivityLogs.vue'),
+        component: () => import('../views/ActivityLogs.vue'),
       }
     ]
   }
