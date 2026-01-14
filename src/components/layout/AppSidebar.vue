@@ -161,23 +161,23 @@ const userBranch = computed(() => {
   if (!user.value || !user.value.branchId) return null;
   return branchesStore.branches.find(b => b.id === user.value.branchId);
 });
-const currentRouteName = computed(() => route.name ? route.name.toLowerCase() : 'cashier');
+const currentRouteName = computed(() => route.name ? route.name.toLowerCase() : 'dashboard');
 
 const menuItems = [
+  { key: 'dashboard', route: 'Dashboard', icon: LayoutDashboard },
   { key: 'cashier', route: 'Cashier', icon: ShoppingCart },
-  // { key: 'dashboard', route: 'Dashboard', icon: LayoutDashboard },
-  // { key: 'online_orders', route: 'OnlineOrders', icon: Globe },
-  // { key: 'products', route: 'Products', icon: Package },
-  // { key: 'sales', route: 'Sales', icon: BarChart3 },
-  // { key: 'stock', route: 'Stock', icon: Package },
-  // { key: 'reports', route: 'Reports', icon: FileText },
-  // { key: 'activity_logs', route: 'ActivityLogs', icon: Activity },
-  // { key: 'chat', route: 'Chat', icon: MessageCircle },
-  // { key: 'users', route: 'Users', icon: Users },
-  // { key: 'customers', route: 'Customers', icon: Users },
-  // { key: 'complaints', route: 'Complaints', icon: MessageCircle },
-  // { key: 'branches', route: 'Branches', icon: Building },
-  // { key: 'settings', route: 'Settings', icon: Settings },
+  { key: 'online_orders', route: 'OnlineOrders', icon: Globe },
+  { key: 'products', route: 'Products', icon: Package },
+  { key: 'sales', route: 'Sales', icon: BarChart3 },
+  { key: 'stock', route: 'Stock', icon: Package },
+  { key: 'reports', route: 'Reports', icon: FileText },
+  { key: 'activity_logs', route: 'ActivityLogs', icon: Activity },
+  { key: 'chat', route: 'Chat', icon: MessageCircle },
+  { key: 'users', route: 'Users', icon: Users },
+  { key: 'customers', route: 'Customers', icon: Users },
+  { key: 'complaints', route: 'Complaints', icon: MessageCircle },
+  { key: 'branches', route: 'Branches', icon: Building },
+  { key: 'settings', route: 'Settings', icon: Settings },
 ];
 
 const filteredMenuItems = computed(() => {
