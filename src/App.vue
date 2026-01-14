@@ -34,24 +34,26 @@ const updateOnlineStatus = () => {
   }
 };
 
-// Apply theme on initial load
-  onMounted(() => {
+  onMounted(async () => {
+    if (navigator.onLine) {
+      try {
+        await settingsStore.fetchSettings();
+      } catch (e) {
+        console.error('Failed to fetch settings', e);
+      }
+    }
+
     settingsStore.applyPrimaryColor(settingsStore.primaryColor);
     locale.value = settingsStore.language;
     updateDirection(settingsStore.language);
     applyTheme(settingsStore.theme);
     
-    // Initialize Socket.io
     onlineOrdersStore.initSocket();
-
-    // Refresh user data (permissions)
     authStore.refreshUser();
 
-    // Network Listeners
     window.addEventListener('online', updateOnlineStatus);
     window.addEventListener('offline', updateOnlineStatus);
     
-    // Initial Sync Check
     if (navigator.onLine) {
       salesStore.syncOfflineSales();
     }

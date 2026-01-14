@@ -313,7 +313,7 @@
 </template>
 
 <script setup>
-import { computed, reactive, ref, watch } from 'vue';
+import { computed, reactive, ref, watch, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { Palette, Printer, ScanBarcode, FileText, Settings as SettingsIcon, Store } from 'lucide-vue-next';
 import { useSettingsStore } from '../store/settings';
@@ -379,8 +379,10 @@ const tabs = computed(() => [
 
 const activeTab = ref('general');
 
-const saveSettings = () => {
-  settingsStore.updateSettings({ ...settings });
+const saveSettings = async () => {
+  const payload = { ...settings };
+  settingsStore.updateSettings(payload);
+  await settingsStore.saveSettingsToBackend(payload);
 };
 
 const resetToDefaults = () => {
@@ -422,6 +424,15 @@ const resetToDefaults = () => {
   settings.autoBackup = false;
 };
 
+onMounted(async () => {
+  try {
+    await settingsStore.fetchSettings();
+    Object.assign(settings, { ...settingsStore.$state });
+  } catch (e) {
+    console.error('Failed to fetch settings', e);
+  }
+});
+
 watch(
   () => settings.primaryColor,
   (newColor) => {
@@ -437,4 +448,3 @@ watch(
   @apply w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-sm;
 }
 </style>
-
