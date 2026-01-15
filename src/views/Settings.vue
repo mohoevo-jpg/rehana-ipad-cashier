@@ -3,7 +3,7 @@
     <h2 class="text-2xl font-bold text-gray-900 px-2">{{ t('settings.title') }}</h2>
 
     <div class="flex-1 bg-white rounded-lg shadow overflow-hidden flex flex-col md:flex-row">
-      <div class="w-full md:w-64 bg-gray-50 border-l border-gray-200 flex flex-row md:flex-col overflow-x-auto md:overflow-visible">
+      <div class="w-full md:w-64 bg-gray-50 border-l border-gray-200 flex flex-col overflow-y-auto">
         <button 
           v-for="tab in tabs" 
           :key="tab.id"

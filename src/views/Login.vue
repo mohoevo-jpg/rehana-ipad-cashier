@@ -32,6 +32,11 @@
               <input id="password" name="password" type="password" required v-model="password" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm">
             </div>
           </div>
+          
+          <div class="flex items-center">
+            <input id="rememberMe" type="checkbox" v-model="rememberMe" class="h-4 w-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500">
+            <label for="rememberMe" class="ml-2 block text-sm text-gray-700">تذكرني</label>
+          </div>
 
           <div v-if="error" class="text-red-600 text-sm text-center">
             {{ error }}
@@ -66,7 +71,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '../store/auth';
 
@@ -84,6 +89,16 @@ const handleLogin = async () => {
   error.value = '';
   try {
     await authStore.login(username.value, password.value, rememberMe.value);
+    try {
+      if (rememberMe.value) {
+        localStorage.setItem('remember_cashier_credentials', JSON.stringify({
+          username: username.value,
+          password: password.value
+        }));
+      } else {
+        localStorage.removeItem('remember_cashier_credentials');
+      }
+    } catch (e) {}
     router.push('/');
   } catch (err) {
     error.value = err.message;
@@ -91,4 +106,16 @@ const handleLogin = async () => {
     loading.value = false;
   }
 };
+
+onMounted(() => {
+  try {
+    const saved = localStorage.getItem('remember_cashier_credentials');
+    if (saved) {
+      const obj = JSON.parse(saved);
+      if (obj?.username) username.value = obj.username;
+      if (obj?.password) password.value = obj.password;
+      rememberMe.value = true;
+    }
+  } catch (e) {}
+});
 </script>
